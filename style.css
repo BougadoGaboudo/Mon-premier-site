@@ -1,0 +1,728 @@
+@font-face {   /* ajouter une nouvelle police */
+	font-family: "Handmade";
+	src: url(./font/Handmade.otf); /* ça permet d'aller chercher le fichier dans un autre dossier */
+}
+
+* {   /* l'étoile = ça applique pour tout */
+	list-style: none; /* list-style none = enlever les pts tout moches dans les listes ul li */
+    margin: 0;   /* margin padding 0 = reset les marges à 0 */
+    padding: 0;
+    font-family: Handmade;
+    text-decoration: none; /* enlever le txt souligné quand il est en href */
+}
+
+body {
+    /* height: 100vh;
+    width: 100vw; */
+    background-color: #ECB729;
+    /* background-image: url(./img/ayaka.jpg); */
+    background-repeat: no-repeat;
+}
+
+/* Bougado Illustrator */
+.container {
+    position: fixed; /* ça permet au bloc de toujours rester au même endroit, même en scrollant */
+    z-index: 2; /* ça permet au bloc d'avoir la prio sur tout le reste quand je scroll, il passera toujours devant les autres éléments */
+}
+.nom {
+    position: absolute;
+}
+
+/* MENU */
+
+.header {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 102px;
+    background-color: #152139;
+    z-index: 1;
+}
+.menu {
+    height: 100px;
+    font-size: 3em;
+}
+.menu li {
+    float: right;
+    width: 200px;
+}
+#left {
+    border-left: 3px solid #283d66;
+}
+.menu li a:link, .menu li a:visited, .gal {
+    display: block;
+    color: #FFF;
+    background: #152139;
+    padding: 20px;
+    border-radius: 20px;
+    border-right: 3px solid #283d66;
+    text-align: center;
+}
+.menu li a:hover {
+    background-color: #ECB729;
+}
+.menu li a:active {
+    background-color: #ECB729;
+}
+.menu .sousmenu {
+    list-style-type: none;
+    display: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    border-radius: 20px;
+}
+.menu .sousmenu li {
+    float: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #152139;
+    border-right: 1px solid #152139;
+    border-radius: 20px;
+}
+
+.menu .sousmenu li a:hover {
+    background-color: #ECB729;
+    color: white;
+}
+.menu li:hover .sousmenu {
+    display: block;
+    background-color: #152139;
+}
+.header .menu li a.actif { /* couleur de l'onglet sélectionné */
+    color: #ECB729;
+}
+.header .menu li a.actif:hover {
+    color: white;
+}
+
+/* DIAPORAMA */
+
+.diapo {
+    float: right;
+    width: 620px;
+    overflow: hidden; /* hidden = cacher la barre scroll déguelasse (mets "auto" pour voir la barre) */
+    border: 2px solid #152139;
+    animation-duration: 25s;
+    animation-name: cadre;
+    animation-iteration-count: infinite;
+    margin-bottom: 50px;
+}
+
+.images {
+    display: flex;
+    animation-duration: 25s;
+    animation-name: mesImages;
+    animation-iteration-count: infinite; /* faire une boucle du diapo */
+}
+@keyframes cadre {
+    0% {
+        width: 620px;
+    }
+    50% {
+        width: 620px;
+    }
+    75% {
+        width: 460.5px;
+    }
+    100%{
+        width: 620px;
+    }
+}
+@keyframes mesImages { 
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-620px);
+    }
+    50% {
+        transform: translateX(-1240px);
+    }
+    75% {
+        transform: translateX(-1860px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* @keyframes mesImages { diapo avec 3 images
+    0% {  /* temps 0% 
+        transform: translateX(0); /* à temps 0, bouge à x=0 
+    }
+    33% {
+        transform: translateX(-620px); /* le nb () = taille de mon image en largeur, ne pas oublier px après le nb ! 
+    }
+    66% {
+        transform: translateX(-1240px); /* 0-33-66 j'ai divisé le temps en 3 car j'ai 3 img 
+    }
+    100% {
+        transform: translateX(0); /* 100 = 0 pour revenir au départ 
+    }
+} */
+
+/* ROAD TO BE AN ARTIST */
+
+.road {
+    position: absolute;
+    top: 160px;
+    left: 140px;
+    /* float: left; */
+}
+.titre{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+p.rtba{
+    border: 2px solid #152139;
+    background-color: #152139;
+    border-radius: 80px;
+    padding: 30px;
+    font-size: 4em;
+    color: white;
+}
+.textroad {
+    color: #152139;
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    margin-top: 50px;
+}
+.textroad p {
+    font-size: 2em;
+    max-width: 990px;
+}
+.yt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 150px;
+}
+.yt p {
+    border: 2px solid #152139;
+    background-color: #152139;
+    border-radius: 80px;
+    padding: 30px;
+    font-size: 4em;
+    color: white;
+}
+
+/* CSS TABLEAU */
+
+.tableau-style {
+	border-collapse: collapse;
+	min-width: 400px;
+	width: auto;
+	box-shadow: 0px 0px 50px #152139 0.20;     /* ça met de l'ombre derrière le tableau, 1ère valeur = dépla droite gauche, 2e valeur = dépla haut bas (valeur(+)= droite/bas et valeur(-)= gauche/haut, 3e valeur = opacité de l'ombre, 0.20=intensité de l'ombre */
+	margin: 50px auto;
+	border: 3px solid #152139;
+}
+
+thead tr {
+	background-color: #152139;
+	color: #fdf2db;
+	text-align: center;
+    font-size: 3em;
+}
+
+td {
+    font-size: 2em;
+    color: #152139;
+}
+
+th, td {
+	padding: 15px 20px;    /*   c'pour aérer l'intérieur du tableau, 1ère valeur (15px)= espace en haut + bas, 2e valeur (20px)= espace à droite + gauche   */
+    text-align: center;
+}
+
+tbody tr, td, th {
+	border: 2px solid #3c3e41;
+}
+
+tbody tr:nth-child(even) {    /* c'pour donner une couleur différente à une ligne even (=pair) ou une ligne odd (=impair) */
+	background-color: #d1d3f7;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #fdf2db;
+}
+.trois tbody tr:nth-child(n+2){
+    background-color:#d1d3f7;
+}
+.trois tbody tr:nth-child(n+4){
+    background-color: #fdf2db;
+}
+.trois tbody tr:nth-child(n+6){
+    background-color:#d1d3f7;
+}
+.trois tbody tr:nth-child(n+8){
+    background-color: #fdf2db;
+}
+.trois tbody tr:nth-child(n+10){
+    background-color:#d1d3f7;
+}
+.trois tbody tr:nth-child(n+12){
+    background-color: #fdf2db;
+}
+td a.mikasite{
+    color: #152139;
+}
+td a.mikasite:hover{
+    text-decoration: underline;
+}
+
+/* SHOP */
+
+.shop {
+    color: #152139;
+    position: relative;
+    font-size: 3em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50px;
+}
+.login{
+    position: absolute;
+    margin: 10px 20px;
+    right: 0px;
+}
+.login a{
+    font-size: 2em;
+    color: #152139;
+    position: relative;
+    float: right;
+}
+.login a:hover{
+    text-decoration: underline;
+}
+.reduc{
+    color: #152139;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 2em;
+    margin: 25px;
+}
+td input{
+    accent-color: #152139;
+}
+.btnsubmit{
+    background-color: white;
+    color: #152139;
+    border: 4px solid #152139;
+    border-radius: 30px;
+    height: 70px;
+    width: 150px;
+    font-size: 1em;
+    cursor: pointer;
+}
+.btnsubmit:active, .btnsubmit:hover{
+    color: #ECB729;
+    background-color: #152139;
+    border: 4px solid white;
+}
+
+/* SONDAGE */
+
+.sondage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+.sondage .text {
+    color: #152139;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 25px;
+}
+select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    /* border:0!important; */
+    border: 2px solid #152139;
+    background: white;
+    background-image: none;
+    flex: 1;
+    padding: 0 .5em;
+    color:#152139;
+    cursor:pointer;
+    font-size: 2em;
+}
+select::-ms-expand {
+    display: none;
+}
+.select {
+    position: relative;
+    display: flex;
+    width: 50em;
+    height: 3em;
+    line-height: 3;
+    background: #5c6664;
+    color: white;
+    overflow: hidden;
+    border-radius: .25em;
+}
+.select::after {
+    content: '\25BC';  /* 25BC = la flèche vers le bas */
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: #152139;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+}
+.select:hover::after {
+    color: #ECB729;
+}
+
+/* CONTACT */
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 100px;
+}
+.contact .mail {
+    position: absolute;
+    justify-content: center;
+    top: 455px;
+}
+p.email {
+    position: absolute;
+    justify-content: center;
+    top: 560px;
+    font-size: 2em;
+    color: #152139;
+    font-weight: bold;
+}
+.contact .logo {
+    position: absolute;
+    justify-content: center;
+    top: 170px;
+}
+.contact p.ici {
+    position: absolute;
+    justify-content: center;
+    top: 400px;
+    font-size: 2em;
+    color: #152139;
+    font-weight: bold;
+}
+.contact .rsociaux {
+    position: absolute;
+    top: 640px;
+}
+
+/* BOUTON SLIDE */
+
+.btn{
+    position: absolute;
+    background-color: white;
+    color: #152139;
+    border: 4px solid #152139;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 150px;
+    font-size: 2em;
+    float: left;
+}
+.btn1{
+    background: -webkit-linear-gradient(0deg,transparent 50%,#152139 50%);
+    background-size: 300px 70px;
+    background-color: white;
+    border: 4px solid #152139;
+    margin: 25px;
+    transition: 0.8s;
+}
+.btn1:hover{
+    background-position: 150px 0;
+    border: 2px solid white;
+}
+.btn1:hover{
+    color: #ECB729;
+}
+
+/* ONGLET STUDY */
+
+.boutonstudy{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+.btnstudy{
+    position: relative;
+    background-color: white;
+    color: #152139;
+    border: 4px solid #152139;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 150px;
+    font-size: 2em;
+    float: left;
+}
+.btnh, .btnf, .btna, .btnp{
+    background: -webkit-linear-gradient(0deg,transparent 50%,#152139 50%);
+    background-size: 300px 70px;
+    background-color: white;
+    border: 4px solid #152139;
+    margin: 50px 25px 15px 25px;
+    transition: 0.8s;
+}
+.btnh:hover, .btnf:hover, .btna:hover, .btnp:hover{
+    background-position: 150px 0;
+    border: 2px solid white;
+}
+.btnh:hover, .btnf:hover, .btna:hover, .btnp:hover{
+    color: #ECB729;
+}
+.textstudy {
+    color: #152139;
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    margin-top: 50px;
+}
+.textstudy p {
+    font-size: 2em;
+    max-width: 990px;
+}
+
+/* FORMULAIRE INSCRIPTION */
+
+.center{
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.wrapper{
+    width: 750px;
+    background: #152139;
+    border-radius: 20px;
+    border: 2px solid white;
+    color: white;
+    padding: 30px 35px 50px; /* ça crée de l'espace entre tous les éléments */
+    box-sizing: border-box;
+}
+.wrapper h1{
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    color: #ECB729;
+}
+.wrapper .input-box{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.input-box .input-field{
+    position: relative;
+    width: 48%;
+    height: 50px;
+    margin: 13px 0;
+    box-sizing: border-box;
+}
+.input-box .input-field input{ /* case pour écrire */
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    font-size: 1.5em;
+    border: 2px solid rgba(255,255,255,0.2);
+    outline: none; /* quand on clique sur la case, y'a plus de cadre blanc autour */
+    color: white;
+    border-radius: 6px;
+    padding: 15px 15px 15px 45px; /* 45px = plus on monte le chiffre, plus le texte ira vers la droite */
+}
+.input-box .input-field input::placeholder{ /* ça correspond à la case par défaut avant que l'utilisateur écrive dedans */
+    color: white;
+    box-sizing: border-box;
+} 
+.input-box .input-field i{ /* position des icones */
+    box-sizing: border-box;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px; /* taille des icones */
+}
+.wrapper label{ /* c'est le texte Je déclare... */
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 10px 0 23px;
+}
+.wrapper label input{ 
+    box-sizing: border-box;
+    accent-color: #fff; /* couleur de la case cochée */
+    margin-right: 5px;
+}
+.wrapper .btninsc{ /* bouton S'inscrire */
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 2em;
+    color: #152139;
+    font-weight: 600;
+}
+.wrapper .btninsc:hover{
+    color: #ECB729;
+    background-color: #152139;
+    border: 2px solid white;
+}
+
+/* FORMULAIRE SE CONNECTER */
+
+.wrapper2{
+    width: 450px;
+    background: #152139;
+    border-radius: 20px;
+    border: 2px solid white;
+    color: white;
+    padding: 30px 35px 30px;
+    box-sizing: border-box;
+}
+.wrapper2 h1{
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    color: #ECB729;
+}
+.wrapper2 .input-box2{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+.input-box2 .input-field2{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 13px 0;
+    box-sizing: border-box;
+}
+.input-box2 .input-field2 input{ /* case pour écrire */
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    font-size: 1.5em;
+    border: 2px solid rgba(255,255,255,0.2);
+    outline: none; /* quand on clique sur la case, y'a plus de cadre blanc autour */
+    color: white;
+    border-radius: 6px;
+    padding: 15px 15px 15px 45px; /* 45px = plus on monte le chiffre, plus le texte ira vers la droite */
+}
+.input-box2 .input-field2 input::placeholder{ /* ça correspond à la case par défaut avant que l'utilisateur écrive dedans */
+    color: white;
+    box-sizing: border-box;
+} 
+.input-box2 .input-field2 i{ /* position des icones */
+    box-sizing: border-box;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px; /* taille des icones */
+}
+.wrapper2 label{ /* c'est le texte Se souvenir de moi */
+    box-sizing: border-box;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper2 label input{ 
+    box-sizing: border-box;
+    accent-color: #fff; /* couleur de la case cochée */
+    margin-right: 5px;
+}
+.wrapper2 .btninsc{ /* bouton Se connecter */
+    margin-top: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 2em;
+    color: #152139;
+    font-weight: 600;
+}
+.wrapper2 .btninsc:hover{
+    color: #ECB729;
+    background-color: #152139;
+    border: 2px solid white;
+}
+.mdpoublie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 15px;
+}
+.mdpoublie label input {
+    margin-right: 10px;
+    accent-color: white; /* couleur de la case cochée */
+}
+.mdpoublie a {
+    color: #ECB729;
+    font-size: 1.3em;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.mdpoublie a:hover {
+    text-decoration: underline;
+}
+.registerlink {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+}
+.registerlink p a {
+    color: #ECB729;
+    text-decoration: none;
+}
+.registerlink p a:hover {
+    text-decoration: underline;
+}
